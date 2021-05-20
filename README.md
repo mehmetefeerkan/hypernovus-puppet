@@ -1,2 +1,2 @@
 # hypernovus-puppet
-Layer 7 Python Flooding script hypervisor for linux system, packed with an autoinstaller script.
+Layer 7 Python Flooding script hypervisor for linux systems, packed with an autoinstaller script.
