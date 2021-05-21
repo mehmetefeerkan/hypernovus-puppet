@@ -16,7 +16,7 @@ The system requires basically nothing. A linux server with 1GB/1Gb/1vCPU does th
 
 ## Single-Command-Installation
    ```sh
-   wget https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/initl7.sh; ./initl7.sh
+   wget https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/initl7.sh; chmod +x initl7.sh; ./initl7.sh
    ```
 ## Usage
 
