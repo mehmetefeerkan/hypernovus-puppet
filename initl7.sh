@@ -6,8 +6,8 @@ PYURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/so
 RUNNERURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/runl7.sh
 CLEANUPURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/cleanupl7.sh
 
-apt install npm
-apt install nodejs
+apt -y install npm
+apt -y install nodejs
 
 wget $RUNNERURL
 chmod +x runl7.sh
