@@ -3,12 +3,16 @@ Layer 7 Python Flooding script hypervisor for linux systems, packed with an auto
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+soon
 
 ### Prerequisites
 
-The system requires basically nothing. A linux server with 1GB/1Gb/1vCPU does the trick up to 1000 requests/second.
+```sh
+sudo su
+apt update
+```
+
+The system requires basically nothing else but hardware. A linux server with 1GB/1Gb/1vCPU does the trick up to 1000 requests/second.
 
 
 
