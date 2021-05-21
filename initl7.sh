@@ -8,6 +8,7 @@ CLEANUPURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/ma
 
 apt -y install npm
 apt -y install nodejs
+apt -y install python2
 
 wget $RUNNERURL
 chmod +x runl7.sh
