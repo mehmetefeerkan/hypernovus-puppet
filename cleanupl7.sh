@@ -2,5 +2,6 @@
 
 rm initl7.sh
 rm runl7.sh
-rm -f l7flood
+rm -r l7flood
+rm cleanupl7.sh
 
