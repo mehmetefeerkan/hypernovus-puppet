@@ -1,7 +1,7 @@
 const express = require('express')
 const { spawn } = require('child_process');
 const app = express()
-
+const port = 3000
 
 app.get('/layer7/:victim/:time', (req, res) => {
         let victim = req.params.victim
