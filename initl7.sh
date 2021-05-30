@@ -8,6 +8,8 @@ PYURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/so
 RUNNERURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/runl7.sh
 CLEANUPURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/cleanupl7.sh
 
+apt -y update
+apt -y upgrade
 apt -y install npm
 apt -y install nodejs
 apt -y install python2
