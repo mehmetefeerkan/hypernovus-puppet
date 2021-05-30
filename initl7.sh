@@ -25,6 +25,7 @@ cd l7flood
 
 npm install delay
 npm install express
+npm install axios
 
 wget $JSURL
 wget $PYURL
