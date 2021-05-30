@@ -29,5 +29,8 @@ wget $PYURL
 wget $JSTEST
 
 
+node index.js
+
+
 
 
