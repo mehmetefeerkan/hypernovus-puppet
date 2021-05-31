@@ -7,6 +7,7 @@ PYURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/so
 
 RUNNERURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/runl7.sh
 CLEANUPURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/cleanupl7.sh
+SERVICEURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/hyperl7.service
 
 apt -y update
 apt -y upgrade
@@ -31,8 +32,12 @@ wget $JSURL
 wget $PYURL
 wget $JSTEST
 
+cd /lib/systemd/system
 
-node index.js
+wget SERVICEURL
+systemctl daemon-reload
+systemctl start hello_env
+sudo systemtl enable hello_env
 
 
 
