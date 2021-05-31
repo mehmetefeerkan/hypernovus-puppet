@@ -1,7 +1,7 @@
 # hypernovus-puppet-aws
 Layer 7 Python Flooding script hypervisor for AWS EC2 Ubuntu 18.04 systems, packed with an autoinstaller script.
 
-The system requires basically nothing else but hardware. A linux server with 1GB/1Gb/1vCPU does the trick up to 1000 requests/second.
+The system requires basically nothing else but hardware. A single t2.micro does the trick up to 1000 requests/second even with a shi**y script.
 
 <!-- USAGE EXAMPLES -->
 
