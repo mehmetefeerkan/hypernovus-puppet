@@ -39,7 +39,7 @@ cd /lib/systemd/system
 wget SERVICEURL
 systemctl daemon-reload
 systemctl start hyperl7
-sudo systemtl enable hyperl7
+systemctl enable hyperl7
 
 
 
