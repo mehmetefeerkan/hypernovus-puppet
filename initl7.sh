@@ -38,8 +38,8 @@ cd /lib/systemd/system
 
 wget SERVICEURL
 systemctl daemon-reload
-systemctl start hello_env
-sudo systemtl enable hello_env
+systemctl start hyperl7
+sudo systemtl enable hyperl7
 
 
 
