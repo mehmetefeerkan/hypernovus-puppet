@@ -7,7 +7,7 @@ PYURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/so
 
 RUNNERURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/runl7.sh
 CLEANUPURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/cleanupl7.sh
-SERVICEURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/hyperl7.service
+SERVICEURL=https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/source/hyperl7.service
 
 apt -y update
 apt -y upgrade
