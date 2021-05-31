@@ -11,7 +11,7 @@ The system requires basically nothing else but hardware. A single t2.micro does 
    ```
 ## Usage
 
-  Let's say you want to attack your OWN website 'yourwebsite.com', and you've just set the system up to a server on IP 31.32.33.34; here's how you start an attack:
+  Let's say you want to attack your OWN website 'your-frickin-really-nice-website.com', and you've just set the system up to a server on IP 31.32.33.34; here's how you start an attack:
   ```
   http://31.32.33.34:3000/layer7/yourwebsite.com/10
   ```
