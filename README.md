@@ -1,5 +1,5 @@
-# hypernovus-puppet
-Layer 7 Python Flooding script hypervisor for linux systems, packed with an autoinstaller script.
+# hypernovus-puppet-aws
+Layer 7 Python Flooding script hypervisor for AWS EC2 Ubuntu 18.04 systems, packed with an autoinstaller script.
 
 ## Getting Started
 
