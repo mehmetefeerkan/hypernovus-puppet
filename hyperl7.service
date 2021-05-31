@@ -1,0 +1,11 @@
+[Unit]
+Description=hypernovus
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /home/ubuntu/l7flood/index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
