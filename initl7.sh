@@ -36,7 +36,7 @@ wget $JSTEST
 
 cd /lib/systemd/system
 
-wget SERVICEURL
+wget $SERVICEURL
 systemctl daemon-reload
 systemctl start hyperl7
 systemctl enable hyperl7
