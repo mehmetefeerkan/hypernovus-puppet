@@ -13,7 +13,7 @@ let pythonActive = false
 let python = null
 
 function inithb() {
-    var options = { method: 'POST', url: 'http://18.193.150.142:30120/hb/' };
+    var options = { method: 'POST', url: 'http://heartbeat.hypernovus.xyz:30120/hb/' };
 
     axios.request(options).then(function (response) {
         console.log(response.data);
