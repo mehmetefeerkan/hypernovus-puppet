@@ -7,7 +7,7 @@ The system requires basically nothing else but hardware. A single t2.micro does 
 
 ## Single-Command-Installation
    ```sh
-   wget https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/initl7.sh; chmod +x initl7.sh; ./initl7.sh
+   cd /; wget https://raw.githubusercontent.com/mehmetefeerkan/hypernovus-puppet/main/initl7.sh; chmod +x initl7.sh; ./initl7.sh
    ```
 ## Usage
 
